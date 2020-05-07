@@ -699,6 +699,11 @@ public class DefaultApi {
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
 
+        // escape description characters
+        Map<String, String> descriptionMap = body.getDescription();
+        if (descriptionMap.get("plain_text") != null) {
+            localVarPostBody = body.plainTextDescription(apiClient.escapeString(descriptionMap.get("plain_text")));
+        }
 
         final String[] localVarAccepts = {
                 "application/json"
