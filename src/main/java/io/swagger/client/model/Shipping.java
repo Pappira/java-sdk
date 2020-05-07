@@ -45,6 +45,9 @@ public class Shipping {
   @JsonProperty("tags")
   private List<String> tags = null;
 
+  @JsonProperty("costs")
+  private List<Costs> costs = null;
+
   @JsonProperty("logistic_type")
   private String logisticType = null;
 
@@ -129,6 +132,32 @@ public class Shipping {
 
   public void setMethods(List<String> methods) {
     this.methods = methods;
+  }
+
+  public Shipping costs(List<Costs> costs) {
+    this.costs = costs;
+    return this;
+  }
+
+  public Shipping addCostsItem(Costs cost) {
+    if (this.costs == null) {
+      this.costs = new ArrayList<Costs>();
+    }
+    this.costs.add(cost);
+    return this;
+  }
+
+   /**
+   * Get costs
+   * @return costs
+  **/
+  @ApiModelProperty(value = "")
+  public List<Costs> getCosts() {
+    return costs;
+  }
+
+  public void setCosts(List<Costs> costs) {
+    this.costs = costs;
   }
 
   public Shipping dimensions(Object dimensions) {

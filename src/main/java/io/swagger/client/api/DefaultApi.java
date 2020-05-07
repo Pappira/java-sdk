@@ -4,15 +4,28 @@ import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
-import io.swagger.client.model.*;
+import io.swagger.client.model.CategoryPrediction;
+import io.swagger.client.model.CategoryResponse;
+import io.swagger.client.model.ItemJson;
+import io.swagger.client.model.ItemResponse;
+import io.swagger.client.model.Message;
+import io.swagger.client.model.MessageCreated;
+import io.swagger.client.model.MessageJSON;
+import io.swagger.client.model.MessageSearchResults;
+import io.swagger.client.model.RefreshToken;
+import io.swagger.client.model.Shipment;
+import io.swagger.client.model.Site;
+import io.swagger.client.model.Sites;
+import io.swagger.client.model.UserResponse;
 
-import javax.ws.rs.core.GenericType;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.ws.rs.core.GenericType;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-08-06T14:21:46.668-03:00")
 public class DefaultApi {
@@ -114,7 +127,7 @@ public class DefaultApi {
      */
 
 /**/
-    public AccessToken authorize(String code, String redirectUri) throws ApiException {
+    public RefreshToken authorize(String code, String redirectUri) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'accessToken' is set
@@ -155,7 +168,7 @@ public class DefaultApi {
 
         String[] localVarAuthNames = new String[]{};
 
-        GenericType<AccessToken> localVarReturnType = new GenericType<AccessToken>() {
+        GenericType<RefreshToken> localVarReturnType = new GenericType<RefreshToken>() {
         };
         return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
@@ -563,6 +576,62 @@ public class DefaultApi {
 
         // create path and map variables
         String localVarPath = "/items/{item_id}"
+                .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+
+
+        final String[] localVarAccepts = {
+                "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+                "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[]{"oAuth2"};
+
+        GenericType<ItemResponse> localVarReturnType = new GenericType<ItemResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
+     * Update an item description.
+     *
+     * @param itemId      The item ID. (required)
+     * @param accessToken Go to http://developers.mercadolibre.com/products-authentication-authorization/ to get a valid access_token for testing purposes. (required)
+     * @param body        (required)
+     * @return ItemResponse
+     * @throws ApiException if fails to make API call
+     */
+    public ItemResponse itemsItemDescriptionPut(String itemId, String accessToken, Object body) throws ApiException {
+        Object localVarPostBody = body;
+
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException(400, "Missing the required parameter 'itemId' when calling itemsItemIdPut");
+        }
+
+        // verify the required parameter 'accessToken' is set
+        if (accessToken == null) {
+            throw new ApiException(400, "Missing the required parameter 'accessToken' when calling itemsItemIdPut");
+        }
+
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException(400, "Missing the required parameter 'body' when calling itemsItemIdPut");
+        }
+
+        // create path and map variables
+        String localVarPath = "/items/{item_id}/description"
                 .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
 
         // query params
@@ -1031,7 +1100,7 @@ public class DefaultApi {
      * @return CategoryPrediction
      * @throws ApiException if fails to make API call
      */
-    public CategoryPrediction sitesSiteIdCategoryPredictorPredictGet(String siteId, String title) throws ApiException {
+    public CategoryPrediction sitesSiteIdCategoryPredictorPredictGet(String siteId, String title, String rootCategory) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'siteId' is set
@@ -1054,7 +1123,10 @@ public class DefaultApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "title", title));
-
+        if (rootCategory != null && !rootCategory.trim().equals("")) {
+            localVarQueryParams
+                .addAll(apiClient.parameterToPairs("", "category_from", rootCategory));
+        }
 
         final String[] localVarAccepts = {
                 "application/json"

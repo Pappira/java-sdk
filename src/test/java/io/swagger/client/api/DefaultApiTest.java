@@ -91,7 +91,7 @@ public class DefaultApiTest {
     public void authorizeTest() throws ApiException {
         DefaultApi api = new DefaultApi(new ApiClient(), clientId, clientSecret);
         String code = "";
-        AccessToken response = api.authorize(code, redirectUri);
+        RefreshToken response = api.authorize(code, redirectUri);
         assertNotNull(response);
         assertNotNull(response.getAccess_token());
         assertEquals("bearer", response.getToken_type());
@@ -678,7 +678,7 @@ public class DefaultApiTest {
     public void sitesSiteIdCategoryPredictorPredictGetTest() throws ApiException {
         String siteId = "MLA";
         String title = "Ipod Touch 6 32GB";
-        CategoryPrediction response = api.sitesSiteIdCategoryPredictorPredictGet(siteId, title);
+        CategoryPrediction response = api.sitesSiteIdCategoryPredictorPredictGet(siteId, title, null);
         assertNotNull(response);
         assertNotNull(response.getId());
         assertNotNull(response.getName());

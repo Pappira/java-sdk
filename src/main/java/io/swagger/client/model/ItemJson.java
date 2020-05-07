@@ -17,7 +17,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -29,7 +31,7 @@ public class ItemJson {
   private String listingTypeId = null;
 
   @JsonProperty("pictures")
-  private List<Pictures> pictures = null;
+  private List<Map<String, String>> pictures = null;
 
   @JsonProperty("title")
   private String title = null;
@@ -64,8 +66,26 @@ public class ItemJson {
   @JsonProperty("attributes")
   private List<Attributes> attributes = null;
 
+  @JsonProperty("sale_terms")
+  private List<SaleTerms> saleTerms = null;
+
   @JsonProperty("shipping")
-  private List<Shipping> shipping = null;
+  private Shipping shipping = null;
+
+  @JsonProperty("description")
+  private Map<String, String> description = null;
+
+  @JsonProperty("warranty")
+  private String warranty = null;
+
+  @JsonProperty("accepts_mercadopago")
+  private Boolean acceptsMercadopago = null;
+
+  @JsonProperty("non_mercado_pago_payment_methods")
+  private List nonMercadoPagoPaymentMethods = new ArrayList();
+
+  @JsonProperty("tags")
+  private List<String> tags = null;
 
   public ItemJson listingTypeId(String listingTypeId) {
     this.listingTypeId = listingTypeId;
@@ -85,17 +105,28 @@ public class ItemJson {
     this.listingTypeId = listingTypeId;
   }
 
-  public ItemJson pictures(List<Pictures> pictures) {
-    this.pictures = pictures;
+  public ItemJson addPictureSource(String picture) {
+    if (this.pictures == null) {
+      this.pictures = new ArrayList<>();
+    }
+    Map<String, String> source = new HashMap<>();
+    source.put("source", picture);
+    this.pictures.add(source);
     return this;
   }
 
-  public ItemJson addPicturesItem(Pictures picturesItem) {
+  public ItemJson addPictureId(String pictureId) {
     if (this.pictures == null) {
-      this.pictures = new ArrayList<Pictures>();
+      this.pictures = new ArrayList<>();
     }
-    this.pictures.add(picturesItem);
+    Map<String, String> source = new HashMap<>();
+    source.put("id", pictureId);
+    this.pictures.add(source);
     return this;
+  }
+
+  public void setPictures(List<Map<String, String>> pictures) {
+    this.pictures = pictures;
   }
 
   /**
@@ -103,12 +134,8 @@ public class ItemJson {
    * @return pictures
    **/
   @ApiModelProperty(value = "")
-  public List<Pictures> getPictures() {
+  public List<Map<String, String>> getPictures() {
     return pictures;
-  }
-
-  public void setPictures(List<Pictures> pictures) {
-    this.pictures = pictures;
   }
 
   public ItemJson title(String title) {
@@ -325,16 +352,8 @@ public class ItemJson {
     this.attributes = attributes;
   }
 
-  public ItemJson shipping(List<Shipping> shipping) {
+  public ItemJson shipping(Shipping shipping) {
     this.shipping = shipping;
-    return this;
-  }
-
-  public ItemJson addShippingItem(Shipping shippingItem) {
-    if (this.shipping == null) {
-      this.shipping = new ArrayList<Shipping>();
-    }
-    this.shipping.add(shippingItem);
     return this;
   }
 
@@ -343,16 +362,107 @@ public class ItemJson {
    * @return shipping
    **/
   @ApiModelProperty(value = "")
-  public List<Shipping> getShipping() {
+  public Shipping getShipping() {
     return shipping;
   }
 
-  public void setShipping(List<Shipping> shipping) {
+  public void setShipping(Shipping shipping) {
     this.shipping = shipping;
   }
 
+  public ItemJson plainTextDescription(String description) {
+    if(this.description == null) {
+      this.description = new HashMap<>();
+    }
+    this.description.put("plain_text", description);
+    return this;
+  }
 
-  @Override
+  @ApiModelProperty(value = "")
+  public Map<String, String> getDescription() {
+    return description;
+  }
+
+  public void setDescription(Map<String, String> description) {
+    this.description = description;
+  }
+
+  @ApiModelProperty(value = "")
+  public String getWarranty() {
+    return warranty;
+  }
+
+  public void setWarranty(String warranty) {
+    this.warranty = warranty;
+  }
+  public ItemJson warranty(String warranty) {
+    this.warranty = warranty;
+    return this;
+  }
+
+  @ApiModelProperty(value = "")
+  public Boolean getAcceptsMercadopago() {
+    return acceptsMercadopago;
+  }
+
+  public ItemJson acceptsMercadopago(boolean acceptsMercadopago) {
+    this.acceptsMercadopago = acceptsMercadopago;
+    return this;
+  }
+
+  public void setAcceptsMercadopago(boolean acceptsMercadopago) {
+    this.acceptsMercadopago = acceptsMercadopago;
+  }
+
+  @ApiModelProperty(value = "")
+  public List getNonMercadoPagoPaymentMethods() {
+    return nonMercadoPagoPaymentMethods;
+  }
+
+  public void setNonMercadoPagoPaymentMethods(List nonMercadoPagoPaymentMethods) {
+    this.nonMercadoPagoPaymentMethods = nonMercadoPagoPaymentMethods;
+  }
+
+  @ApiModelProperty(value = "")
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+  public ItemJson addTag(String tag) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<String>();
+    }
+    this.tags.add(tag);
+    return this;
+  }
+
+  public ItemJson saleTerms(List<SaleTerms> saleTerms) {
+      this.saleTerms = saleTerms;
+      return this;
+  }
+
+  public ItemJson addSaleTerm(SaleTerms saleTerm) {
+      if (this.saleTerms == null) {
+          this.saleTerms = new ArrayList<SaleTerms>();
+      }
+      this.saleTerms.add(saleTerm);
+      return this;
+  }
+
+  @ApiModelProperty(value = "")
+  public List<SaleTerms> getSaleTerms() {
+      return saleTerms;
+  }
+
+  public void setSaleTerms(List<SaleTerms> saleTerms) {
+      this.saleTerms = saleTerms;
+  }
+
+    @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
@@ -374,6 +484,7 @@ public class ItemJson {
             Objects.equals(this.officialStoreId, itemJson.officialStoreId) &&
             Objects.equals(this.variations, itemJson.variations) &&
             Objects.equals(this.attributes, itemJson.attributes) &&
+            Objects.equals(this.saleTerms, itemJson.saleTerms) &&
             Objects.equals(this.shipping, itemJson.shipping);
   }
 
@@ -401,6 +512,7 @@ public class ItemJson {
     sb.append("    officialStoreId: ").append(toIndentedString(officialStoreId)).append("\n");
     sb.append("    variations: ").append(toIndentedString(variations)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    saleTerms: ").append(toIndentedString(saleTerms)).append("\n");
     sb.append("    shipping: ").append(toIndentedString(shipping)).append("\n");
     sb.append("}");
     return sb.toString();
