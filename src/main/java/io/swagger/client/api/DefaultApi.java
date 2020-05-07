@@ -1,9 +1,19 @@
 package io.swagger.client.api;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.ws.rs.core.GenericType;
+
 import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
 import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
+import io.swagger.client.model.AccessToken;
 import io.swagger.client.model.CategoryPrediction;
 import io.swagger.client.model.CategoryResponse;
 import io.swagger.client.model.ItemJson;
@@ -17,15 +27,6 @@ import io.swagger.client.model.Shipment;
 import io.swagger.client.model.Site;
 import io.swagger.client.model.Sites;
 import io.swagger.client.model.UserResponse;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.ws.rs.core.GenericType;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-08-06T14:21:46.668-03:00")
 public class DefaultApi {
@@ -88,7 +89,7 @@ public class DefaultApi {
 
 
     /**
-     * @param callback: The callback URL. Must be the applications redirect URI
+     * @param redirectUri: The callback URL. Must be the applications redirect URI
      * @param authUrl:  The authorization URL. Get from Meli.AuthUrls
      * @return the authorization URL
      */
@@ -604,62 +605,6 @@ public class DefaultApi {
     }
 
     /**
-     * Update an item description.
-     *
-     * @param itemId      The item ID. (required)
-     * @param accessToken Go to http://developers.mercadolibre.com/products-authentication-authorization/ to get a valid access_token for testing purposes. (required)
-     * @param body        (required)
-     * @return ItemResponse
-     * @throws ApiException if fails to make API call
-     */
-    public ItemResponse itemsItemDescriptionPut(String itemId, String accessToken, Object body) throws ApiException {
-        Object localVarPostBody = body;
-
-        // verify the required parameter 'itemId' is set
-        if (itemId == null) {
-            throw new ApiException(400, "Missing the required parameter 'itemId' when calling itemsItemIdPut");
-        }
-
-        // verify the required parameter 'accessToken' is set
-        if (accessToken == null) {
-            throw new ApiException(400, "Missing the required parameter 'accessToken' when calling itemsItemIdPut");
-        }
-
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException(400, "Missing the required parameter 'body' when calling itemsItemIdPut");
-        }
-
-        // create path and map variables
-        String localVarPath = "/items/{item_id}/description"
-                .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
-
-
-        final String[] localVarAccepts = {
-                "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = {
-                "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[]{"oAuth2"};
-
-        GenericType<ItemResponse> localVarReturnType = new GenericType<ItemResponse>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
      * List an item.
      *
      * @param accessToken Go to http://developers.mercadolibre.com/products-authentication-authorization/ to get a valid access_token for testing purposes. (required)
@@ -753,155 +698,6 @@ public class DefaultApi {
         String[] localVarAuthNames = new String[]{"oAuth2"};
 
         GenericType<Object> localVarReturnType = new GenericType<Object>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
-     * Get a message by ID.
-     *
-     * @param accessToken (required)
-     * @param messageId   The message ID. (required)
-     * @return Message
-     * @throws ApiException if fails to make API call
-     */
-    public Message messagesMessageIdGet(String accessToken, String messageId) throws ApiException {
-        Object localVarPostBody = null;
-
-        // verify the required parameter 'accessToken' is set
-        if (accessToken == null) {
-            throw new ApiException(400, "Missing the required parameter 'accessToken' when calling messagesMessageIdGet");
-        }
-
-        // verify the required parameter 'messageId' is set
-        if (messageId == null) {
-            throw new ApiException(400, "Missing the required parameter 'messageId' when calling messagesMessageIdGet");
-        }
-
-        // create path and map variables
-        String localVarPath = "/messages/{message_id}"
-                .replaceAll("\\{" + "message_id" + "\\}", apiClient.escapeString(messageId.toString()));
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
-
-
-        final String[] localVarAccepts = {
-                "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = {
-                "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[]{"oAuth2"};
-
-        GenericType<Message> localVarReturnType = new GenericType<Message>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
-     * Return all messages from a order.
-     *
-     * @param accessToken (required)
-     * @param orderId     The order ID. (required)
-     * @return MessageSearchResults
-     * @throws ApiException if fails to make API call
-     */
-    public MessageSearchResults messagesOrdersOrderIdGet(String accessToken, Integer orderId) throws ApiException {
-        Object localVarPostBody = null;
-
-        // verify the required parameter 'accessToken' is set
-        if (accessToken == null) {
-            throw new ApiException(400, "Missing the required parameter 'accessToken' when calling messagesOrdersOrderIdGet");
-        }
-
-        // verify the required parameter 'orderId' is set
-        if (orderId == null) {
-            throw new ApiException(400, "Missing the required parameter 'orderId' when calling messagesOrdersOrderIdGet");
-        }
-
-        // create path and map variables
-        String localVarPath = "/messages/orders/{order_id}"
-                .replaceAll("\\{" + "order_id" + "\\}", apiClient.escapeString(orderId.toString()));
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
-
-
-        final String[] localVarAccepts = {
-                "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = {
-                "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[]{"oAuth2"};
-
-        GenericType<MessageSearchResults> localVarReturnType = new GenericType<MessageSearchResults>() {
-        };
-        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-    }
-
-    /**
-     * Send a message.
-     *
-     * @param accessToken (required)
-     * @param body        (required)
-     * @return MessageCreated
-     * @throws ApiException if fails to make API call
-     */
-    public MessageCreated messagesPost(String accessToken, MessageJSON body) throws ApiException {
-        Object localVarPostBody = body;
-
-        // verify the required parameter 'accessToken' is set
-        if (accessToken == null) {
-            throw new ApiException(400, "Missing the required parameter 'accessToken' when calling messagesPost");
-        }
-
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException(400, "Missing the required parameter 'body' when calling messagesPost");
-        }
-
-        // create path and map variables
-        String localVarPath = "/messages";
-
-        // query params
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
-
-
-        final String[] localVarAccepts = {
-                "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-        final String[] localVarContentTypes = {
-                "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-        String[] localVarAuthNames = new String[]{"oAuth2"};
-
-        GenericType<MessageCreated> localVarReturnType = new GenericType<MessageCreated>() {
         };
         return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
