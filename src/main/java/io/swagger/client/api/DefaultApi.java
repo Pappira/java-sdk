@@ -605,6 +605,70 @@ public class DefaultApi {
     }
 
     /**
+     * Update an item description.
+     *
+     * @param itemId      The item ID. (required)
+     * @param accessToken Go to http://developers.mercadolibre.com/products-authentication-authorization/ to get a valid access_token for testing purposes. (required)
+     * @param body        (required)
+     * @return ItemResponse
+     * @throws ApiException if fails to make API call
+     */
+    public ItemResponse itemsItemDescriptionPut(String itemId, String accessToken, Object body) throws ApiException {
+        Object localVarPostBody = body;
+
+        // verify the required parameter 'itemId' is set
+        if (itemId == null) {
+            throw new ApiException(400, "Missing the required parameter 'itemId' when calling itemsItemIdPut");
+        }
+
+        // verify the required parameter 'accessToken' is set
+        if (accessToken == null) {
+            throw new ApiException(400, "Missing the required parameter 'accessToken' when calling itemsItemIdPut");
+        }
+
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException(400, "Missing the required parameter 'body' when calling itemsItemIdPut");
+        }
+
+        // escape description characters
+        Map<String, String> descriptionMap = (Map<String, String>) localVarPostBody;
+        if (descriptionMap.get("plain_text") == null) {
+            throw new ApiException(400, "Missing the required parameter 'plain_text' when updating description");
+        } else {
+            descriptionMap.put("plain_text", apiClient.escapeString(descriptionMap.get("plain_text")));
+        }
+
+        // create path and map variables
+        String localVarPath = "/items/{item_id}/description"
+            .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[]{"oAuth2"};
+
+        GenericType<ItemResponse> localVarReturnType = new GenericType<ItemResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    /**
      * List an item.
      *
      * @param accessToken Go to http://developers.mercadolibre.com/products-authentication-authorization/ to get a valid access_token for testing purposes. (required)
