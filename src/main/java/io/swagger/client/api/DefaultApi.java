@@ -631,14 +631,6 @@ public class DefaultApi {
             throw new ApiException(400, "Missing the required parameter 'body' when calling itemsItemIdPut");
         }
 
-        // escape description characters
-        Map<String, String> descriptionMap = (Map<String, String>) localVarPostBody;
-        if (descriptionMap.get("plain_text") == null) {
-            throw new ApiException(400, "Missing the required parameter 'plain_text' when updating description");
-        } else {
-            descriptionMap.put("plain_text", apiClient.escapeString(descriptionMap.get("plain_text")));
-        }
-
         // create path and map variables
         String localVarPath = "/items/{item_id}/description"
             .replaceAll("\\{" + "item_id" + "\\}", apiClient.escapeString(itemId.toString()));
@@ -698,12 +690,6 @@ public class DefaultApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
-
-        // escape description characters
-        Map<String, String> descriptionMap = body.getDescription();
-        if (descriptionMap.get("plain_text") != null) {
-            localVarPostBody = body.plainTextDescription(apiClient.escapeString(descriptionMap.get("plain_text")));
-        }
 
         final String[] localVarAccepts = {
                 "application/json"
