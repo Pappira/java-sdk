@@ -445,20 +445,20 @@ public class DefaultApiTest {
      */
     @Test
     public void ordersOrderIdGetTest() throws ApiException {
-        Integer orderId = 123456;
+        Long orderId = 123456L;
         Object response = api.ordersOrderIdGet(accessToken, orderId);
         assertNotNull(response);
     }
 
     @Test(expected = ApiException.class)
     public void ordersOrderIdGetTestFailsIfOrderIdIsInvalid() throws ApiException {
-        Integer orderId = 123;
+        Long orderId = 123L;
         api.ordersOrderIdGet(accessToken, orderId);
     }
 
     @Test(expected = ApiException.class)
     public void ordersOrderIdGetTestFailsIfAccessTokenIsInvalid() throws ApiException {
-        Integer orderId = 123456;
+        Long orderId = 123456L;
         String accessToken = "123ABC";
         api.ordersOrderIdGet(accessToken, orderId);
     }

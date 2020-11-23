@@ -765,7 +765,7 @@ public class DefaultApi {
      * @return Object
      * @throws ApiException if fails to make API call
      */
-    public Object ordersOrderIdGet(String accessToken, Integer orderId) throws ApiException {
+    public Object ordersOrderIdGet(String accessToken, Long orderId) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'accessToken' is set
