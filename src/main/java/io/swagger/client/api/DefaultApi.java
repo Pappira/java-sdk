@@ -22,6 +22,7 @@ import io.swagger.client.model.Message;
 import io.swagger.client.model.MessageCreated;
 import io.swagger.client.model.MessageJSON;
 import io.swagger.client.model.MessageSearchResults;
+import io.swagger.client.model.OrderResponse;
 import io.swagger.client.model.RefreshToken;
 import io.swagger.client.model.Shipment;
 import io.swagger.client.model.Site;
@@ -765,7 +766,7 @@ public class DefaultApi {
      * @return Object
      * @throws ApiException if fails to make API call
      */
-    public Object ordersOrderIdGet(String accessToken, Long orderId) throws ApiException {
+    public OrderResponse ordersOrderIdGet(String accessToken, Long orderId) throws ApiException {
         Object localVarPostBody = null;
 
         // verify the required parameter 'accessToken' is set
@@ -802,7 +803,7 @@ public class DefaultApi {
 
         String[] localVarAuthNames = new String[]{"oAuth2"};
 
-        GenericType<Object> localVarReturnType = new GenericType<Object>() {
+        GenericType<OrderResponse> localVarReturnType = new GenericType<OrderResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }

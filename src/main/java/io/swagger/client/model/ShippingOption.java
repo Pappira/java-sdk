@@ -32,7 +32,7 @@ import io.swagger.client.model.EstimatedScheduleLimit;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-08-06T14:21:46.668-03:00")
 public class ShippingOption {
   @JsonProperty("id")
-  private Integer id = null;
+  private Long id = null;
 
   @JsonProperty("shipping_method_id")
   private Integer shippingMethodId = null;
@@ -70,7 +70,7 @@ public class ShippingOption {
   @JsonProperty("estimated_delivery_extended")
   private EstimatedDeliveryExtended estimatedDeliveryExtended = null;
 
-  public ShippingOption id(Integer id) {
+  public ShippingOption id(Long id) {
     this.id = id;
     return this;
   }
@@ -80,11 +80,11 @@ public class ShippingOption {
    * @return id
   **/
   @ApiModelProperty(value = "")
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

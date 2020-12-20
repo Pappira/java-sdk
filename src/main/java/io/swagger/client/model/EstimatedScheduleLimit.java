@@ -26,9 +26,9 @@ import io.swagger.annotations.ApiModelProperty;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-08-06T14:21:46.668-03:00")
 public class EstimatedScheduleLimit {
   @JsonProperty("date")
-  private Object date = null;
+  private String date = null;
 
-  public EstimatedScheduleLimit date(Object date) {
+  public EstimatedScheduleLimit date(String date) {
     this.date = date;
     return this;
   }
@@ -38,11 +38,11 @@ public class EstimatedScheduleLimit {
    * @return date
   **/
   @ApiModelProperty(value = "")
-  public Object getDate() {
+  public String getDate() {
     return date;
   }
 
-  public void setDate(Object date) {
+  public void setDate(String date) {
     this.date = date;
   }
 
