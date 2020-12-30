@@ -1,5 +1,23 @@
 package io.swagger.client.api;
 
+import io.swagger.client.ApiClient;
+import io.swagger.client.ApiException;
+import io.swagger.client.Configuration;
+import io.swagger.client.Pair;
+import io.swagger.client.model.CategoryPrediction;
+import io.swagger.client.model.CategoryResponse;
+import io.swagger.client.model.ItemJson;
+import io.swagger.client.model.ItemResponse;
+import io.swagger.client.model.OrderResponse;
+import io.swagger.client.model.QuestionAnswerRequest;
+import io.swagger.client.model.QuestionResponse;
+import io.swagger.client.model.QuestionsSearchResponse;
+import io.swagger.client.model.RefreshToken;
+import io.swagger.client.model.Shipment;
+import io.swagger.client.model.Site;
+import io.swagger.client.model.Sites;
+import io.swagger.client.model.UserResponse;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -8,26 +26,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.core.GenericType;
-
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.model.AccessToken;
-import io.swagger.client.model.CategoryPrediction;
-import io.swagger.client.model.CategoryResponse;
-import io.swagger.client.model.ItemJson;
-import io.swagger.client.model.ItemResponse;
-import io.swagger.client.model.Message;
-import io.swagger.client.model.MessageCreated;
-import io.swagger.client.model.MessageJSON;
-import io.swagger.client.model.MessageSearchResults;
-import io.swagger.client.model.OrderResponse;
-import io.swagger.client.model.RefreshToken;
-import io.swagger.client.model.Shipment;
-import io.swagger.client.model.Site;
-import io.swagger.client.model.Sites;
-import io.swagger.client.model.UserResponse;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-08-06T14:21:46.668-03:00")
 public class DefaultApi {
@@ -806,6 +804,134 @@ public class DefaultApi {
         GenericType<OrderResponse> localVarReturnType = new GenericType<OrderResponse>() {
         };
         return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    public QuestionResponse questionsQuestionIdGet(String accessToken, Long questionId) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'accessToken' is set
+        if (accessToken == null) {
+            throw new ApiException(400, "Missing the required parameter 'accessToken' when calling questionsQuestionIdGet");
+        }
+
+        // verify the required parameter 'orderId' is set
+        if (questionId == null) {
+            throw new ApiException(400, "Missing the required parameter 'orderId' when calling questionsQuestionIdGet");
+        }
+
+        // create path and map variables
+        String localVarPath = "/questions/{question_id}"
+                .replaceAll("\\{" + "question_id" + "\\}", apiClient.escapeString(questionId.toString()));
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+
+
+        final String[] localVarAccepts = {
+                "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+                "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[]{"oAuth2"};
+
+        GenericType<QuestionResponse> localVarReturnType = new GenericType<QuestionResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    public QuestionsSearchResponse questionsSearchQuestionGet(String accessToken, Long sellerId, Integer offset) throws ApiException {
+        Object localVarPostBody = null;
+
+        // verify the required parameter 'accessToken' is set
+        if (accessToken == null) {
+            throw new ApiException(400, "Missing the required parameter 'accessToken' when calling questionsQuestionIdGet");
+        }
+
+        // verify the required parameter 'orderId' is set
+        if (sellerId == null) {
+            throw new ApiException(400, "Missing the required parameter 'orderId' when calling questionsQuestionIdGet");
+        }
+        if (offset == null) {
+            offset = 0;
+        }
+
+        // create path and map variables
+        String localVarPath = "/questions/search";
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        localVarQueryParams.add(new Pair("seller_id", sellerId.toString()));
+        localVarQueryParams.add(new Pair("offset", offset.toString()));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+
+
+        final String[] localVarAccepts = {
+                "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+                "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[]{"oAuth2"};
+
+        GenericType<QuestionsSearchResponse> localVarReturnType = new GenericType<QuestionsSearchResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+    }
+
+    public QuestionResponse answersPost(String accessToken, QuestionAnswerRequest body) throws ApiException {
+        Object localVarPostBody = body;
+
+        // verify the required parameter 'accessToken' is set
+        if (accessToken == null) {
+            throw new ApiException(400, "Missing the required parameter 'accessToken' when calling itemsPost");
+        }
+
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException(400, "Missing the required parameter 'body' when calling itemsPost");
+        }
+
+        // create path and map variables
+        String localVarPath = "/answers";
+
+        // query params
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        localVarHeaderParams.put("Authorization", String.format("Bearer %s", accessToken));
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+        String[] localVarAuthNames = new String[]{"oAuth2"};
+
+        GenericType<QuestionResponse> localVarReturnType = new GenericType<QuestionResponse>() {
+        };
+        return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     }
 
     /**
