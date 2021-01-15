@@ -30,6 +30,8 @@ import javax.ws.rs.core.GenericType;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-08-06T14:21:46.668-03:00")
 public class DefaultApi {
 
+    public static final String AUTHORIZATION_HEADER_FORMAT = "Bearer %s";
+    public static final String AUTHORIZATION_HEADER_NAME = "Authorization";
     private ApiClient apiClient;
     private String accessToken;
     private String refreshToken;
@@ -290,7 +292,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -351,7 +354,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -405,7 +409,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -527,7 +532,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -583,7 +589,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -639,7 +646,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -688,7 +696,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
         final String[] localVarAccepts = {
                 "application/json"
@@ -736,7 +745,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -786,7 +796,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -828,7 +839,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -875,7 +887,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -914,7 +927,8 @@ public class DefaultApi {
         // query params
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        localVarHeaderParams.put("Authorization", String.format("Bearer %s", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
@@ -961,7 +975,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "buyer", buyer));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "seller", seller));
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
@@ -1015,7 +1030,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -1188,7 +1204,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
@@ -1233,7 +1250,8 @@ public class DefaultApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access_token", accessToken));
+        localVarHeaderParams.put(
+            AUTHORIZATION_HEADER_NAME, String.format(AUTHORIZATION_HEADER_FORMAT, accessToken));
 
 
         final String[] localVarAccepts = {
